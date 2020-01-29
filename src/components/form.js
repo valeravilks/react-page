@@ -5,7 +5,7 @@ export default class extends React.Component{
     render() {
         return(
             <Container>
-                <h2>Свяжитесь с нами</h2>
+                <h2>{this.props.data.title}</h2>
                 <Form>
                     <Row>
                         <Col lg={8}>

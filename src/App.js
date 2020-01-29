@@ -15,13 +15,13 @@ class App extends React.Component{
     render(){
 
         let GalleryComponent = this.state.components.filter(item => item.type === 'GalleryComponent');
-        // let GridComponent = this.props.data.filter(item => item.type === 'GridComponent');
+        let GridComponent = this.state.components.filter(item => item.type === 'GridComponent');
 
         return (
             <>
                 <NavBar/>
                 <Gallery data={GalleryComponent}/>
-                <InformText data={this.state}/>
+                <InformText data={GridComponent}/>
                 <FormC data={this.state.form}/>
             </>
         );
