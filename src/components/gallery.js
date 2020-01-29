@@ -16,12 +16,11 @@ export default class extends React.Component{
         };
 
         let slides = this.props.data[0].metadata.images.map(item => {
-            return <img src={item} alt=''/>
+            return <img src={item} alt='' key={item}/>
         });
 
         return(
             <Container>
-
                 <h1>{this.props.data[0].metadata.title}</h1>
                 <Slider {...settings}>
                     {slides}
