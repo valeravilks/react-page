@@ -1,30 +1,68 @@
 import React from "react";
 import {Container} from "react-bootstrap";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Swiper from 'react-id-swiper';
+import styled from 'styled-components';
+import 'swiper/css/swiper.css';
+import './gallery.css';
+
+let Title = styled.div`
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 25px;
+`;
+
+let ImgButton = styled.div`
+  border-radius: 5px;
+  background-image: url(${props => props.theme.backgroundImage});
+  background-position: center center;
+  background-size: cover;
+  height: 243px;
+`;
 
 export default class extends React.Component{
-    // TODO Use swiper
     render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: this.props.data[0].metadata.slidesPerView,
-            slidesToScroll: 3
-        };
+         let slides = this.props.data[0].metadata.images.map(item => {
+            return (
+                <ImgButton theme={{backgroundImage: item}} key={item}>
+                </ImgButton>
+            )
+         });
 
-        let slides = this.props.data[0].metadata.images.map(item => {
-            return <img src={item} alt='' key={item}/>
-        });
+        const params = {
+            breakpoints: {
+                992: {
+                    slidesPerView: this.props.data[0].metadata.slidesPerView
+                },
+                768: {
+                    slidesPerView: 2
+                }
+            },
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.dot-swiper',
+                clickable: true,
+                renderBullet: (index, className) => {
+                    return '<div class="' + className + '"></div>';
+                }
+            },
+            navigation: {
+                nextEl: '.swiper-next',
+                prevEl: '.swiper-prev',
+                renderBullet: (index, className) => {
+                    return '<div class="' + className + '"></div>';
+                }
+            }
+        }
 
         return(
             <Container>
-                <h1>{this.props.data[0].metadata.title}</h1>
-                <Slider {...settings}>
+                <Title>{this.props.data[0].metadata.title}</Title>
+                <Swiper {...params}>
                     {slides}
-                </Slider>
+                </Swiper>
             </Container>
         );
     }
