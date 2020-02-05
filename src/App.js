@@ -13,7 +13,6 @@ class App extends React.Component{
     }
 
     render(){
-
         let GalleryComponent = this.state.components.filter(item => item.type === 'GalleryComponent');
         let GridComponent = this.state.components.filter(item => item.type === 'GridComponent');
 
@@ -26,7 +25,6 @@ class App extends React.Component{
             </>
         );
     }
-
 }
 
 export default App;

@@ -44,11 +44,11 @@ export default function(){
                 { "name": "email", "group": "main", "type": "email", "label": "E-mail", "required": true },
                 { "name": "appointment_date", "group": "main", "type": "date", "label": "Дата записи", "required": true },
                 { "name": "name", "group": "additional", "type": "textarea", "label": "Комментарий", "required": false },
-                { "name": "agreement", "type": "checkbox", "label": "<span>Я даю согласие на обработку персональных данных согласно <a href='#'>политике конфиденциальности</a>.</span>"}
+                { "name": "agreement", "type": "checkbox", "label": "Я даю согласие на обработку персональных данных согласно политике конфиденциальности"}
             ],
             "field_groups": {
-                "main": "col-md-8",
-                "additional": "col-md-4"
+                "main": "col-lg-8 col-md-12",
+                "additional": "col-lg-4 col-md-12"
             },
             "submit_button": {
                 "text": "Отправить заявку"
